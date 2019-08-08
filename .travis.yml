@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t mlobko/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mlobko/docker-react npm run test
